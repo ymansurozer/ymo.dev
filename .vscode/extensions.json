@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "GitHub.vscode-pull-request-github",
+    "antfu.goto-alias",
+    "antfu.iconify",
+    "Nuxt.mdc",
+    "Nuxtr.nuxtr-vscode",
+    "YoavBls.pretty-ts-errors",
+    "bradlc.vscode-tailwindcss",
+    "austenc.tailwind-docs",
+    "Gruntfuggly.todo-tree",
+    "Vue.volar"
+  ]
+}

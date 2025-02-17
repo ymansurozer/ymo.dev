@@ -1,0 +1,24 @@
+@import "tailwindcss";
+@import "@nuxt/ui-pro";
+
+@theme {
+  --font-sans: 'Geist', sans-serif;
+
+  /* Flexoki Orange. Credit: https://stephango.com/flexoki */
+  --color-theme-50: #fff3ed;
+  --color-theme-100: #ffe7db;
+  --color-theme-150: #ffdbc9;
+  --color-theme-200: #ffcfb7;
+  --color-theme-300: #ffb793;
+  --color-theme-400: #ff9f6f;
+  --color-theme-500: #ff874b;
+  --color-theme-600: #ff6f27;
+  --color-theme-700: #ff5703;
+  --color-theme-800: #db4b03;
+  --color-theme-900: #b73f03;
+  --color-theme-950: #933303;
+}
+
+:root {
+  --ui-container: var(--container-4xl);
+}

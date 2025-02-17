@@ -1,0 +1,44 @@
+{
+  "name": "ymo.dev",
+  "type": "module",
+  "private": true,
+  "packageManager": "pnpm@9.10.0",
+  "scripts": {
+    "build": "nuxt build",
+    "clean": "pnpx rimraf .nuxt node_modules && pnpm i",
+    "cf:deploy-prod": "pnpm run build && wrangler deploy",
+    "cf:preview": "pnpm run build && wrangler dev --port 3000",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "typecheck": "vue-tsc --noEmit",
+    "up": "taze major -I"
+  },
+  "dependencies": {
+    "@iconify-json/lucide": "^1.2.26",
+    "@nuxt/content": "^3.1.1",
+    "@nuxt/fonts": "^0.10.3",
+    "@nuxt/image": "^1.9.0",
+    "@nuxt/ui-pro": "3.0.0-alpha.12",
+    "@nuxtjs/seo": "2.0.2",
+    "nuxt": "^3.15.4",
+    "nuxt-security": "^2.1.5",
+    "posthog-js": "^1.217.4",
+    "vue": "latest",
+    "vue-router": "latest"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.2.0",
+    "@vueuse/core": "^12.6.1",
+    "@vueuse/nuxt": "^12.6.1",
+    "eslint": "^9.20.1",
+    "eslint-plugin-tailwindcss": "^3.18.0",
+    "nitro-cloudflare-dev": "^0.2.1",
+    "taze": "^18.5.0",
+    "vue-tsc": "^2.2.0",
+    "wrangler": "^3.109.0"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "extends": [
+    "github>nuxt/renovate-config-nuxt"
+  ],
+  "schedule": ["before 4am on the first day of the month"]
+}
