@@ -15,18 +15,18 @@ const navigation = inject<Ref<ContentNavigationItem[]>>("navigation");
     </template>
 
     <template #right>
-      <div class="items-center gap-4 hidden lg:flex">
+      <div class="hidden lg:flex items-center gap-4">
         <ULink
           v-for="item in navigation"
           :key="item.path"
           :to="item.path"
-          class="font-medium text-base tracking-wide"
+          class="font-medium text-base"
         >
           {{ item.title }}
         </ULink>
       </div>
 
-      <div class="flex items-center gap-1">
+      <div class="flex items-center gap-0.5">
         <UButton
           v-for="social in socials"
           :key="social.url"
@@ -42,7 +42,7 @@ const navigation = inject<Ref<ContentNavigationItem[]>>("navigation");
       <UColorModeSwitch />
     </template>
 
-    <template #content>
+    <template #body>
       <UNavigationMenu
         :items="navigation?.map(item => ({
           label: item.title,

@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+const { name, url } = useRuntimeConfig().public.site;
+
 const { data: posts } = await useAsyncData("blog-all", () =>
   queryCollection("blog")
     .order("date", "DESC")
@@ -14,11 +16,32 @@ const filteredPosts = computed(() => {
   return posts.value?.filter(post => post.tags?.includes(selectedTag.value!));
 });
 
-// TODO: Add meta tags
+const description = "Exploring code, design, and beyond";
 
-// TODO: Add schema
+useSeoMeta({
+  description,
+  twitterCard: "summary_large_image",
+  twitterSite: "@ymansurozer",
+});
 
-// TODO: Add og image
+useSchemaOrg([
+  {
+    "@type": "Blog",
+    "name": `${name} Blog`,
+    "description": description,
+    "url": `${url}${useRoute().path}`,
+    "publisher": {
+      "@id": "https://ymo.dev/#identity",
+    },
+  },
+]);
+
+defineOgImageComponent("Custom", {
+  headline: name,
+  title: "Blog",
+  description,
+  image: "/profile.png",
+});
 </script>
 
 <template>
@@ -35,6 +58,7 @@ const filteredPosts = computed(() => {
               <UButton
                 :label="t"
                 :variant="selectedTag === t ? 'solid' : 'soft'"
+                color="primary"
                 size="xs"
                 @click.prevent="selectedTag = t"
               />
@@ -59,16 +83,7 @@ const filteredPosts = computed(() => {
         :to="post.path"
         orientation="vertical"
         variant="subtle"
-      >
-        <template #badge>
-          <UBadge
-            v-for="t in post.tags"
-            :key="t"
-            variant="soft"
-            :label="t"
-          />
-        </template>
-      </UBlogPost>
+      />
     </UBlogPosts>
   </div>
 </template>

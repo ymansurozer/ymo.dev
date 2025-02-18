@@ -7,7 +7,10 @@ export default defineContentConfig({
       source: "*.md",
       type: "page",
       schema: z.object({
-        draft: z.boolean().optional(),
+        title: z.string(),
+        description: z.string(),
+        date: z.date().optional(),
+        image: z.string().optional(),
       }),
     })),
     blog: defineCollection(asSitemapCollection({
@@ -15,11 +18,10 @@ export default defineContentConfig({
       type: "page",
       schema: z.object({
         title: z.string(),
-        date: z.date(),
         description: z.string(),
+        date: z.date(),
         image: z.string().optional(),
         tags: z.array(z.string()),
-        draft: z.boolean().optional(),
       }),
     })),
   },

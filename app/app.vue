@@ -19,16 +19,22 @@ provide("navigation", navigation);
 <template>
   <UApp>
     <NuxtRouteAnnouncer />
-    <NuxtLoadingIndicator color="var(--color-theme-500)" />
+    <NuxtLoadingIndicator color="var(--color-primary-400)" />
 
-    <AppHeader />
+    <div v-motion-fade-visible-once>
+      <AppHeader />
 
-    <UMain>
-      <NuxtLayout>
-        <NuxtPage />
-      </NuxtLayout>
-    </UMain>
+      <UMain>
+        <NuxtLayout>
+          <NuxtPage />
+        </NuxtLayout>
+      </UMain>
 
-    <AppFooter />
+      <AppFooter />
+    </div>
+
+    <DevOnly>
+      <DevTailwindSize class="bottom-4 left-4 fixed" />
+    </DevOnly>
   </UApp>
 </template>

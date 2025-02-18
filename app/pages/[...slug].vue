@@ -1,18 +1,20 @@
 <script lang="ts" setup>
 import type { BlogCollectionItem } from "@nuxt/content";
 
-const route = useRoute();
-const isBlogPost = route.path.includes("/blog/");
+const { name } = useRuntimeConfig().public.site;
 
-const { data } = await useAsyncData(route.path, async () => {
+const routePath = useRoute().path;
+const isBlogPost = routePath.includes("/blog/");
+
+const { data } = await useAsyncData(routePath, async () => {
   // wait 2 secs
   await new Promise(resolve => setTimeout(resolve, 2000));
   if (isBlogPost) {
     const [post, surround] = await Promise.all([
       queryCollection("blog")
-        .path(route.path)
+        .path(routePath)
         .first(),
-      queryCollectionItemSurroundings("blog", route.path, {
+      queryCollectionItemSurroundings("blog", routePath, {
         fields: ["title", "description"],
       }),
     ]);
@@ -20,7 +22,7 @@ const { data } = await useAsyncData(route.path, async () => {
   }
 
   const page = await queryCollection("page")
-    .path(route.path)
+    .path(routePath)
     .first();
   return { content: page };
 });
@@ -32,11 +34,30 @@ if (!data.value?.content) {
 const page = computed(() => data.value?.content);
 const surround = computed(() => isBlogPost ? data.value?.surround : undefined);
 
-// TODO: Add meta tags
+useSeoMeta({
+  ...page.value?.seo,
+  twitterCard: "summary_large_image",
+  twitterSite: "@ymansurozer",
+});
 
-// TODO: Add schema
+if (isBlogPost) {
+  useSchemaOrg([
+    defineArticle({
+      "@type": ["Article", "BlogPosting"],
+      "image": page.value?.image,
+      "datePublished": page.value?.date ? new Date(page.value?.date).toISOString() : undefined,
+    }),
+  ]);
+}
 
-// TODO: Add og image
+defineOgImageComponent("Custom", {
+  headline: isBlogPost
+    ? "Blog"
+    : routePath !== "/" ? name : undefined,
+  title: page.value?.title,
+  description: page.value?.description,
+  image: page.value?.image,
+});
 </script>
 
 <template>
@@ -44,18 +65,41 @@ const surround = computed(() => isBlogPost ? data.value?.surround : undefined);
     <UPageHeader
       :title="page.title"
       :description="page.description"
-      :ui="{ title: 'text-(--ui-primary)' }"
-      :links="isBlogPost ? (page as BlogCollectionItem).tags?.map(tag => ({ label: tag, variant: 'soft', to: `/blog?tag=${tag}` })) : undefined"
     >
       <template #headline>
         <time
           v-if="isBlogPost && (page as BlogCollectionItem).date"
-          class="text-(--ui-text-dimmed) font-normal"
+          class="font-normal text-(--ui-text-muted)"
         >
           {{ new Date((page as BlogCollectionItem).date).toLocaleDateString("en-GB", { year: "numeric", month: "short", day: "numeric" }) }}
         </time>
       </template>
+
+      <div
+        v-if="isBlogPost && (page as BlogCollectionItem).tags.length"
+        class="flex flex-wrap gap-2 mt-4"
+      >
+        <UButton
+          v-for="tag in (page as BlogCollectionItem).tags"
+          :key="tag"
+          variant="soft"
+          class="font-medium"
+          size="xs"
+        >
+          {{ tag }}
+        </UButton>
+      </div>
     </UPageHeader>
+
+    <NuxtPicture
+      v-if="isBlogPost && page.image"
+      :src="page.image"
+      :alt="page.title"
+      width="657"
+      height="345"
+      sizes="400px xs:583px sm:657px"
+      :img-attrs="{ class: 'rounded-b-lg w-full h-auto' }"
+    />
 
     <UPageBody>
       <ContentRenderer

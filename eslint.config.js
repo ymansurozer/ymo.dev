@@ -1,12 +1,8 @@
 import antfu from "@antfu/eslint-config";
-import { FlatCompat } from "@eslint/eslintrc";
-
-// Flat config does not support extend yet, so we need to do this to enable the Tailwindcss plugin.
-const compat = new FlatCompat();
 
 export default antfu(
   {
-    ignores: ["node_modules", "dist", ".output", ".nuxt", "prisma/migrations"],
+    ignores: ["node_modules", "dist", ".output", ".nuxt"],
 
     stylistic: {
       indent: 2,
@@ -68,18 +64,4 @@ export default antfu(
       "unicorn/consistent-function-scoping": "off",
     },
   },
-  ...compat.config({
-    // TODO
-    // extends: ["plugin:tailwindcss/recommended"],
-    // rules: {
-    //   "tailwindcss/no-custom-classname": ["warn", {
-    //     whitelist: [
-    //       "^(bg|border|ring|fill|divide|shadow|stroke|text|from|via|to|prose)-primary(-((50|100|200|300|400|500|600|700|800|900|950)(\/(5|10|15|20|25|30|35|40|45|50|55|60|65|70|75|80|85|90|95|100))?))?$",
-    //       "shiny-button",
-    //     ],
-    //   }],
-    //   "tailwindcss/migration-from-tailwind-2": "off",
-    //   "tailwindcss/enforces-negative-arbitrary-values": "off",
-    // },
-  }),
 );

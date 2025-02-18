@@ -1,8 +1,8 @@
 export default defineAppConfig({
   ui: {
     colors: {
-      primary: "theme",
-      neutral: "neutral",
+      primary: "flexokiOrange",
+      neutral: "flexokiGray",
     },
 
     button: {
@@ -22,6 +22,11 @@ export default defineAppConfig({
       icon: "i-simple-icons-github",
       label: "GitHub",
       url: "https://github.com/ymansurozer",
+    },
+    {
+      icon: "i-simple-icons-bluesky",
+      label: "Bluesky",
+      url: "https://bsky.app/profile/ymansurozer.bsky.social",
     },
     {
       icon: "i-simple-icons-x",

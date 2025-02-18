@@ -6,12 +6,12 @@ const { socials } = useAppConfig();
   <USeparator />
 
   <UFooter>
-    <div class="flex flex-col items-center justify-center gap-3">
-      <p class="text-sm text-center text-(--ui-text-muted)">
+    <div class="flex flex-col justify-center items-center gap-3">
+      <p class="text-(--ui-text-muted) text-sm text-center">
         © 2025{{ new Date().getFullYear() !== 2025 ? `-${new Date().getFullYear()}` : '' }} Yusuf Mansur Özer
       </p>
 
-      <div class="flex items-center justify-center">
+      <div class="flex justify-center items-center">
         <UButton
           v-for="social in socials"
           :key="social.url"

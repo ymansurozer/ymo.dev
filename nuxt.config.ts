@@ -1,3 +1,5 @@
+import { definePerson } from "nuxt-schema-org/schema";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   $production: {
@@ -13,7 +15,17 @@ export default defineNuxtConfig({
     modules: ["nuxt-security"],
   },
 
+  app: {
+    head: {
+      titleTemplate: "%s",
+    },
+  },
+
   css: ["~/assets/css/main.css"],
+
+  colorMode: {
+    preference: "dark",
+  },
 
   compatibilityDate: "2025-02-16",
 
@@ -44,6 +56,11 @@ export default defineNuxtConfig({
   },
 
   fonts: {
+    // We seem to need this for TailwindCSS v4
+    // https://github.com/nuxt/fonts/issues/468
+    experimental: {
+      processCSSVariables: true,
+    },
     defaults: {
       weights: [400, 500, 600, 700],
       styles: ["normal", "italic"],
@@ -63,6 +80,7 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "@vueuse/nuxt",
     "@nuxt/fonts",
+    "@vueuse/motion/nuxt",
   ],
 
   nitro: {
@@ -88,14 +106,29 @@ export default defineNuxtConfig({
   },
 
   schemaOrg: {
-    // TODO
+    identity: definePerson({
+      name: "Yusuf Mansur Özer",
+      // TODO
+      description: "Software Developer",
+      image: "/profile.png",
+      url: "https://ymo.dev",
+      email: "hi@ymo.dev",
+      sameAs: [
+        "https://www.linkedin.com/in/ymansurozer/",
+        "https://github.com/ymansurozer",
+        "https://bsky.app/profile/ymansurozer.bsky.social",
+        "https://x.com/ymansurozer",
+      ],
+    }),
   },
 
   site: {
     url: "https://ymo.dev",
   },
 
-  sitemap: {
-    // TODO
+  ui: {
+    theme: {
+      colors: ["primary", "neutral"],
+    },
   },
 });

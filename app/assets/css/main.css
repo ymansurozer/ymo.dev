@@ -3,22 +3,78 @@
 
 @theme {
   --font-sans: 'Geist', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  
+  /* We use Flexoki color scheme and design system: https://stephango.com/flexoki */
+  --color-white: rgb(255, 252, 240);
+  --color-black: rgb(16, 15, 15);
 
-  /* Flexoki Orange. Credit: https://stephango.com/flexoki */
-  --color-theme-50: #fff3ed;
-  --color-theme-100: #ffe7db;
-  --color-theme-150: #ffdbc9;
-  --color-theme-200: #ffcfb7;
-  --color-theme-300: #ffb793;
-  --color-theme-400: #ff9f6f;
-  --color-theme-500: #ff874b;
-  --color-theme-600: #ff6f27;
-  --color-theme-700: #ff5703;
-  --color-theme-800: #db4b03;
-  --color-theme-900: #b73f03;
-  --color-theme-950: #933303;
+  --color-flexokiOrange-50: rgb(255, 231, 206);
+  --color-flexokiOrange-100: rgb(254, 211, 175);
+  --color-flexokiOrange-150: rgb(252, 193, 146);
+  --color-flexokiOrange-200: rgb(249, 174, 119);
+  --color-flexokiOrange-300: rgb(236, 139, 73);
+  --color-flexokiOrange-400: rgb(218, 112, 44);
+  --color-flexokiOrange-500: rgb(203, 97, 32);
+  --color-flexokiOrange-600: rgb(188, 82, 21);
+  --color-flexokiOrange-700: rgb(157, 67, 16);
+  --color-flexokiOrange-800: rgb(113, 50, 13);
+  --color-flexokiOrange-850: rgb(89, 41, 13);
+  --color-flexokiOrange-900: rgb(64, 32, 13);
+  --color-flexokiOrange-950: rgb(39, 24, 14);
+
+  --color-flexokiGray-50: rgb(242, 240, 229);
+  --color-flexokiGray-100: rgb(230, 228, 217);
+  --color-flexokiGray-150: rgb(218, 216, 206);
+  --color-flexokiGray-200: rgb(206, 205, 195);
+  --color-flexokiGray-300: rgb(183, 181, 172);
+  --color-flexokiGray-400: rgb(159, 157, 150);
+  --color-flexokiGray-500: rgb(135, 133, 128);
+  --color-flexokiGray-600: rgb(111, 110, 105);
+  --color-flexokiGray-700: rgb(87, 86, 83);
+  --color-flexokiGray-800: rgb(64, 62, 60);
+  --color-flexokiGray-850: rgb(52, 51, 49);
+  --color-flexokiGray-900: rgb(40, 39, 38);
+  --color-flexokiGray-950: rgb(28, 27, 26);
 }
 
 :root {
   --ui-container: var(--container-4xl);
+  font-size: calc(1rem + 0.1vw);
+
+  --ui-text-dimmed: var(--color-flexokiGray-300);
+  --ui-text-muted:var(--color-flexokiGray-600);
+  --ui-text-toned: var(--color-flexokiGray-600);
+  --ui-text: var(--color-black);
+  --ui-text-highlighted: var(--color-black);
+
+  --ui-bg: var(--color-white);
+  --ui-bg-muted: var(--color-flexokiGray-50);
+  --ui-bg-elevated: var(--color-flexokiGray-50);
+  --ui-bg-accented: var(--color-flexokiGray-100);
+  --ui-bg-inverted: var(--color-black);
+  
+  --ui-border: var(--color-flexokiGray-100);
+  --ui-border-muted: var(--color-flexokiGray-150);
+  --ui-border-accented: var(--color-flexokiGray-150);
+  --ui-border-inverted: var(--color-black);
+}
+
+.dark {
+  --ui-text-dimmed: var(--color-flexokiGray-700);
+  --ui-text-muted:var(--color-flexokiGray-500);
+  --ui-text-toned: var(--color-flexokiGray-500);
+  --ui-text: var(--color-flexokiGray-200);
+  --ui-text-highlighted: var(--color-white);
+
+  --ui-bg: var(--color-black);
+  --ui-bg-muted: var(--color-flexokiGray-950);
+  --ui-bg-elevated: var(--color-flexokiGray-950);
+  --ui-bg-accented: var(--color-flexokiGray-900);
+  --ui-bg-inverted: var(--color-white);
+  
+  --ui-border: var(--color-flexokiGray-900);
+  --ui-border-muted: var(--color-flexokiGray-850);
+  --ui-border-accented: var(--color-flexokiGray-850);
+  --ui-border-inverted: var(--color-white);
 }

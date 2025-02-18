@@ -1,10 +1,6 @@
 <template>
-  <div class="flex items-center gap-2">
-    <span
-      class="flex items-center text-xl font-bold bg-gradient-to-r
-    from-gray-800 via-gray-700 to-gray-600
-    dark:from-gray-200 dark:via-gray-300 dark:to-gray-400 bg-clip-text text-transparent"
-    >
+  <div class="flex items-center gap-2 font-mono tracking-tighter">
+    <span class="flex items-center bg-clip-text bg-gradient-to-r from-primary-700 dark:from-primary-200 via-primary-500 dark:via-primary-300 to-primary-400 dark:to-primary-400 font-bold text-transparent text-xl">
       ymo.dev
     </span>
   </div>

@@ -1,15 +1,16 @@
 {
   "recommendations": [
-    "dbaeumer.vscode-eslint",
-    "GitHub.vscode-pull-request-github",
+    "austenc.tailwind-docs",
     "antfu.goto-alias",
     "antfu.iconify",
+    "dbaeumer.vscode-eslint",
+    "dejmedus.tailwind-sorter",
+    "bradlc.vscode-tailwindcss",
+    "GitHub.vscode-pull-request-github",
+    "Gruntfuggly.todo-tree",
     "Nuxt.mdc",
     "Nuxtr.nuxtr-vscode",
-    "YoavBls.pretty-ts-errors",
-    "bradlc.vscode-tailwindcss",
-    "austenc.tailwind-docs",
-    "Gruntfuggly.todo-tree",
-    "Vue.volar"
+    "Vue.volar",
+    "YoavBls.pretty-ts-errors"
   ]
 }
