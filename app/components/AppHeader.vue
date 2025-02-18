@@ -15,12 +15,12 @@ const navigation = inject<Ref<ContentNavigationItem[]>>("navigation");
     </template>
 
     <template #right>
-      <div class="hidden lg:flex items-center gap-4">
+      <div class="hidden lg:flex items-center gap-3">
         <ULink
           v-for="item in navigation"
           :key="item.path"
           :to="item.path"
-          class="font-medium text-base"
+          class="font-medium text-sm"
         >
           {{ item.title }}
         </ULink>
